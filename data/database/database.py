@@ -1,5 +1,5 @@
 from mysql.connector import pooling
-from .Config import dbConfig
+from ..Config import dbConfig
 
 
 
