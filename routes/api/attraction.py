@@ -3,9 +3,6 @@ from data.database import cursor
 
 attractions = Blueprint("attractions", __name__)
 
-#取得資料庫資料總筆數，放進totalId變數裡
-cursor.execute("SELECT COUNT(`id`) FROM `attraction`")
-totalId = cursor.fetchone()
 
 
 @attractions.route("/api/attractions")
@@ -13,6 +10,10 @@ def check():
 	#取得前端傳回來的query string
 	page = request.args.get("page")
 	keyword = request.args.get("keyword")
+
+	#取得資料庫總筆數
+	cursor.execute("SELECT COUNT(`id`) FROM `attraction`")
+	totalId = cursor.fetchone()
 
 	#if page and keyword are empty
 	if page == None and keyword == None:
@@ -91,6 +92,9 @@ def check():
 
 @attractions.route("/api/attraction/<attractionId>")
 def checkId(attractionId):
+	#取得資料庫裡總筆數
+	cursor.execute("SELECT COUNT(`id`) FROM `attraction`")
+	totalId = cursor.fetchone()
 	#確認id是否為數字，且不超過資料庫裡的最大id
 	if attractionId.isdigit() == True:
 		attractionId = int(attractionId)
@@ -99,7 +103,7 @@ def checkId(attractionId):
 			cursor.execute("SELECT * FROM `attraction` WHERE `id` = %s",[attractionId])
 			searchId_data = cursor.fetchone()
 			searchId_data = handleImage(searchId_data)
-			return {"datas": searchId_data}
+			return {"data": searchId_data}
 		else:
 			#如果數字超過最大的id
 			return {

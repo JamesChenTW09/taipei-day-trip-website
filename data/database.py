@@ -17,6 +17,7 @@ connection_pool = pooling.MySQLConnectionPool(
 connect = connection_pool.get_connection()
 cursor = connect.cursor(dictionary = True)
 
+
 #新增資料庫和table
 #cursor.execute("CREATE DATABASE `taipei_attractions`;")
 #cursor.execute("USE `taipei_attractions`;")
