@@ -1,5 +1,5 @@
 from flask import *
-from data.database.database import cursor
+from data.database import cursor
 
 attractions = Blueprint("attractions", __name__)
 
