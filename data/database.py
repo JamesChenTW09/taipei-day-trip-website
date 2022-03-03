@@ -17,6 +17,13 @@ connection_pool = pooling.MySQLConnectionPool(
 connect = connection_pool.get_connection()
 cursor = connect.cursor(dictionary = True)
 
+#新增資料庫和table
+#cursor.execute("CREATE DATABASE `taipei_attractions`;")
+#cursor.execute("USE `taipei_attractions`;")
+#cursor.execute("CREATE TABLE `attraction`(`id` INT PRIMARY KEY AUTO_INCREMENT,`name` VARCHAR(20),`category` VARCHAR(10),`description` TEXT,`address` TEXT,`transport` TEXT,`mrt` VARCHAR(10),`latitude` VARCHAR(15),`longitude` VARCHAR(15),`images` TEXT);")
+
+
+#將資料寫進資料庫
 # with open("taipei-attractions.json", encoding="utf-8")as file:
 
 #     attractions_info= json.load(file)["result"]["results"]

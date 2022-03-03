@@ -14,8 +14,6 @@ def check():
 	page = request.args.get("page")
 	keyword = request.args.get("keyword")
 
-	
-
 	#if page and keyword are empty
 	if page == None and keyword == None:
 		return {
@@ -24,7 +22,6 @@ def check():
 				},400
 	# if only keyword is empty
 	elif keyword == None and page != None:
-
 		maxPage = checkMaxPage(totalId["COUNT(`id`)"])
 		#check page is number or not?
 		if str(page).isdigit() == True:	
@@ -39,19 +36,19 @@ def check():
 				"message":"請輸入數字"
 			},400
 		#check page is between valid range
-		page = int(page)
+		# page = int(page)
 		if page >= 0 and page < maxPage:
 			start = 12*page
 			cursor.execute("SELECT * FROM `attraction` LIMIT %s,12",[start])
 			search_page_data = cursor.fetchall()
-			search_page_data = handleListImage(search_page_data)
-
+			search_page_data = handleImage(search_page_data)
 			return {"nextPage":nextPage, "data":search_page_data},200
+		#if page number is not in valid range
 		else: return {
 				"error":True,
 				"message":"請輸入正確的範圍"
 			},400
-
+	# if only keyword isn't empty
 	elif page == None and keyword != None:
 		cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE CONCAT('%', %s,'%') LIMIT 0,12",[keyword])
 		search_keyword_data = cursor.fetchall()
@@ -61,20 +58,20 @@ def check():
 			"message":"無相關資料"
 			},400
 		else:
-			search_keyword_data = handleListImage(search_keyword_data)
+			search_keyword_data = handleImage(search_keyword_data)
 			return {"datas": search_keyword_data},200
-	else:
+	else:  # both page and keyword have data
+		if page.isdigit() == False:
+			return {
+				"error":True,
+				"message":"請在頁數輸入正數字"
+				},400
 		cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE CONCAT('%', %s,'%')",[keyword])
 		search_keyword_data = cursor.fetchall()
 		if search_keyword_data == []:
 			return {
 				"error":True,
 				"message":"無相關資料"
-				},400
-		elif page.isdigit() == False:
-			return {
-				"error":True,
-				"message":"請在頁數輸入正數字"
 				},400
 		else:
 			page = int(page)
@@ -84,7 +81,7 @@ def check():
 				start = 12*page
 				cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE CONCAT('%', %s,'%') LIMIT %s,12",[keyword, start])
 				search_both_data = cursor.fetchall()
-				search_both_data = handleListImage(search_both_data)
+				search_both_data = handleImage(search_both_data)
 				return {"nextPage":nextPage, "data":search_both_data},200
 			else:
 				return {
@@ -101,7 +98,7 @@ def checkId(attractionId):
 			#找到資料庫相對應的資料，對images做split變成list，並整理
 			cursor.execute("SELECT * FROM `attraction` WHERE `id` = %s",[attractionId])
 			searchId_data = cursor.fetchone()
-			searchId_data = handleDictImage(searchId_data)
+			searchId_data = handleImage(searchId_data)
 			return {"datas": searchId_data}
 		else:
 			#如果數字超過最大的id
@@ -120,7 +117,7 @@ def checkId(attractionId):
 def interal_server_error(e):
 	return {
   		"error": True,
-  		"message": "伺服器壞掉了"
+  		"message": "出問題了"
 	,},500
 
 
@@ -141,14 +138,15 @@ def checkNextPage(page, maxPage):
 			nextPage = int(page)+1
 			return nextPage
 
-def handleDictImage(dict):
-	searchId_data_images = dict["images"].split(",")
-	searchId_data_images.pop(-1)
-	dict["images"] = searchId_data_images
-	return dict
-def handleListImage(list):
-	for num in list:
-		searchId_data_images = num["images"].split(",")
-		searchId_data_images.pop(-1)
-		num["images"] = searchId_data_images
-	return list
+def handleImage(images):
+	if type(images) == type([]):
+		for image in images:
+			searchId_data_images = image["images"].split(",")
+			searchId_data_images.pop(-1)
+			image["images"] = searchId_data_images
+		return images
+	elif type(images) == type({}):
+			searchId_data_images = images["images"].split(",")
+			searchId_data_images.pop(-1)
+			images["images"] = searchId_data_images
+			return images
