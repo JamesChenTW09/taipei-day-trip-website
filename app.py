@@ -1,20 +1,17 @@
+
 from flask import *
+from routes.api.attraction import attractions
+from routes.pages.pages import pages
+
 app=Flask(__name__)
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 
-# Pages
-@app.route("/")
-def index():
-	return render_template("index.html")
-@app.route("/attraction/<id>")
-def attraction(id):
-	return render_template("attraction.html")
-@app.route("/booking")
-def booking():
-	return render_template("booking.html")
-@app.route("/thankyou")
-def thankyou():
-	return render_template("thankyou.html")
+#blueprint
+app.register_blueprint(attractions, url_prefix='')
+app.register_blueprint(pages, url_prefix='')
 
-app.run(port=3000)
+
+
+
+app.run(port=3000, debug=True)
