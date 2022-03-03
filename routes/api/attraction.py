@@ -41,11 +41,8 @@ def check():
 		#check page is between valid range
 		page = int(page)
 		if page >= 0 and page < maxPage:
-
-			#set 12 datas in one page. set start and finish according to page
-			start = 12*page+1
-			finish = start+11
-			cursor.execute("SELECT * FROM `attraction` WHERE `id` >= %s AND `id` <=%s",[start, finish])
+			start = 12*page
+			cursor.execute("SELECT * FROM `attraction` LIMIT %s,12",[start])
 			search_page_data = cursor.fetchall()
 			search_page_data = handleListImage(search_page_data)
 
@@ -56,8 +53,7 @@ def check():
 			},400
 
 	elif page == None and keyword != None:
-
-		cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE CONCAT('%', %s,'%') LIMIT 0,11",[keyword])
+		cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE CONCAT('%', %s,'%') LIMIT 0,12",[keyword])
 		search_keyword_data = cursor.fetchall()
 		if search_keyword_data == []:
 			return {
@@ -86,9 +82,7 @@ def check():
 			nextPage = checkNextPage(page, maxPage)
 			if page >= 0 and page < maxPage:
 				start = 12*page
-				finish = start+11
-			
-				cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE CONCAT('%', %s,'%') LIMIT %s,%s",[keyword, start, finish])
+				cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE CONCAT('%', %s,'%') LIMIT %s,12",[keyword, start])
 				search_both_data = cursor.fetchall()
 				search_both_data = handleListImage(search_both_data)
 				return {"nextPage":nextPage, "data":search_both_data},200
