@@ -117,13 +117,6 @@ def checkId(attractionId):
 				"message":"請輸入正確的數字範圍"
 			},400
 
-@attractions.errorhandler(500)
-def interal_server_error(e):
-	return {
-  		"error": True,
-  		"message": "出問題了"
-	,},500
-
 
 def checkMaxPage(count):
 	if count / 12 == 0:
@@ -154,3 +147,5 @@ def handleImage(images):
 			searchId_data_images.pop(-1)
 			images["images"] = searchId_data_images
 			return images
+
+

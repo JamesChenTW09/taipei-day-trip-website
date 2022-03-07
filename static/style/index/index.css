@@ -1,0 +1,69 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.nav_top {
+  width: 1200px;
+  height: 54px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(24, 50px);
+  align-items: center;
+  justify-content: space-between;
+}
+.nav_top h1 {
+  grid-column: 1/4;
+}
+.nav_top ul {
+  grid-column: 20/24;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main_banner {
+  width: 100%;
+  height: 320px;
+  background: url("/static/photos/cks_memorialHall.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.main_banner .txt_and_search {
+  width: 1200px;
+  height: 320px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main_banner .txt_and_search p {
+  margin: 25px 0px;
+}
+.main_banner .txt_and_search h2,
+.main_banner .txt_and_search p {
+  color: white;
+}
+.main_banner .txt_and_search .search_area input {
+  width: 400px;
+  height: 46px;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+}
+.main_banner .txt_and_search .search_area button {
+  height: 46px;
+  width: 46px;
+  border: none;
+  margin-left: -3px;
+  border-radius: 5px;
+  background-color: #0697c7;
+  cursor: pointer;
+}
+.main_banner .txt_and_search .search_area button:focus {
+  border: none;
+}
+.main_banner .txt_and_search .search_area button i {
+  color: white;
+}/*# sourceMappingURL=index.css.map */

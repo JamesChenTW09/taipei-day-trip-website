@@ -3,7 +3,6 @@ from .Config import dbConfig
 import json
 
 
-
 connection_pool = pooling.MySQLConnectionPool(
                                 pool_name=dbConfig["db_poolName"],
                                 pool_size=dbConfig["db_poolSize"],
