@@ -78,7 +78,7 @@ def check():
 			page = int(page)
 			maxPage = checkMaxPage(len(search_keyword_data))
 			nextPage = checkNextPage(page, maxPage)
-			if page >= 0 and page < maxPage:
+			if page >= 0 and page <= maxPage:
 				start = 12*page
 				cursor.execute("SELECT * FROM `attraction` WHERE `name` LIKE CONCAT('%', %s,'%') LIMIT %s,12",[keyword, start])
 				search_both_data = cursor.fetchall()
@@ -119,7 +119,7 @@ def checkId(attractionId):
 
 
 def checkMaxPage(count):
-	if count / 12 == 0:
+	if count % 12 == 0:
 		maxPage = count/12-1
 		return maxPage
 	else:
