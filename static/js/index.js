@@ -52,6 +52,7 @@ window.onscroll = () => {
     footers.getBoundingClientRect().bottom <= window.innerHeight + 1 &&
     fetchComplete
   ) {
+    fetchComplete = false;
     if (!searchScroll) {
       keyword = "";
     }
@@ -60,7 +61,6 @@ window.onscroll = () => {
         return res.json();
       })
       .then((res) => {
-        fetchComplete = false;
         if (!res.nextPage) {
           nextPage = null;
         }
