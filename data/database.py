@@ -14,7 +14,7 @@ connection_pool = pooling.MySQLConnectionPool(
                                 database=dbConfig["db_database"])
 
 connect = connection_pool.get_connection()
-cursor = connect.cursor(dictionary = True)
+# cursor = connect.cursor(dictionary = True)
 
 
 #新增資料庫和table

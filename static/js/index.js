@@ -103,16 +103,17 @@ let fetchComplete = true;
 
 //search button
 on("click", ".search_button", function (e) {
+  fetchComplete = false;
   keyword = e.target.parentElement.children[0].value;
   if (keyword == "") {
     e.preventDefault();
+    fetchComplete = true;
     alert("請輸入搜尋關鍵字");
     return;
   }
   attractionList.innerHTML = "";
   fetch(`/api/attractions?keyword=${keyword}&page=0`)
     .then((res) => {
-      fetchComplete = false;
       return res.json();
     })
     .then((res) => {
