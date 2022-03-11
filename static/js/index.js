@@ -78,7 +78,7 @@ window.onscroll = () => {
 const footers = select("footer");
 const attractionList = select("main");
 //searshScroll to check which onscroll to use, fetchComplete to check whether fetch is complete
-let searchScroll;
+let searchScroll, nextPage;
 let fetchComplete = true;
 
 //home page loaded first 12 datas
