@@ -55,7 +55,6 @@ header .nav_top ul li {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  transition: 0.5s;
 }
 .main_container .image_container .dotContainer {
   top: 93%;
@@ -189,6 +188,11 @@ header .nav_top ul li {
   cursor: pointer;
 }
 
+.activeAnimation {
+  -webkit-animation: move 0.7s forwards;
+          animation: move 0.7s forwards;
+}
+
 @-webkit-keyframes move {
   from {
     opacity: 0;
@@ -292,5 +296,6 @@ footer p {
   .main_container .tour_booking {
     grid-column: 2/3;
     grid-row: 7/8;
+    grid-template-rows: 15px 22px 15px 48px 15px 35px 15px 22px 15px 22px 25px 25px auto 41px;
   }
 }/*# sourceMappingURL=attraction.css.map */

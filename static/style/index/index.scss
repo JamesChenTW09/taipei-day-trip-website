@@ -105,6 +105,9 @@ main {
   div {
     cursor: pointer;
     border: 1px solid rgba(128, 128, 128, 0.3);
+    &:hover {
+      opacity: 0.8;
+    }
     img {
       vertical-align: bottom;
       width: 100%;

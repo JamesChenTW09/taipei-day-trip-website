@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="" />
+    <meta name="author" content="James Chen" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .image_container {
+        width: 400px;
+        height: 300px;
+        border: 1px solid gray;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        transition: 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image_container"></div>
+  </body>
+  <script>
+    fetch("api/attraction/11")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        images = res.data["images"];
+        let imageNum = 0;
+        let imageContainer = document.querySelector(".image_container");
+        imageContainer.style.backgroundImage = `url("${images[imageNum]}")`;
+        imageContainer.addEventListener("click", (e) => {
+          imageNum++;
+          if (imageNum == images.length) {
+            imageNum = 0;
+          }
+          imageContainer.style.backgroundImage = `url("${images[imageNum]}")`;
+        });
+      });
+  </script>
+</html>
