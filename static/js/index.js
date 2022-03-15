@@ -41,6 +41,9 @@ function sortData(data, i) {
   divContainer.appendChild(txtContainer);
   attractionList.appendChild(divContainer);
 
+  divContainer.addEventListener("click", function () {
+    location.href = "/attraction/" + data[i]["id"];
+  });
   return attractionList;
 }
 //handle home page and search page scoll event
