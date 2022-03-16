@@ -41,6 +41,9 @@ function sortData(data, i) {
   divContainer.appendChild(txtContainer);
   attractionList.appendChild(divContainer);
 
+  divContainer.addEventListener("click", function () {
+    location.href = "/attraction/" + data[i]["id"];
+  });
   return attractionList;
 }
 //handle home page and search page scoll event
@@ -78,7 +81,7 @@ window.onscroll = () => {
 const footers = select("footer");
 const attractionList = select("main");
 //searshScroll to check which onscroll to use, fetchComplete to check whether fetch is complete
-let searchScroll;
+let searchScroll, nextPage;
 let fetchComplete = true;
 
 //home page loaded first 12 datas

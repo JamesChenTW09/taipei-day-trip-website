@@ -1,5 +1,5 @@
 from flask import *
-from data.database import connect
+from data.database import connection_pool
 
 attractions = Blueprint("attractions", __name__)
 
@@ -7,6 +7,7 @@ attractions = Blueprint("attractions", __name__)
 
 @attractions.route("/api/attractions")
 def check():
+	connect = connection_pool.get_connection()
 	cursor = connect.cursor(dictionary = True)
 	#取得前端傳回來的query string
 	page = request.args.get("page")
@@ -19,6 +20,7 @@ def check():
 	#if page and keyword are empty
 	if page == None and keyword == None:
 		cursor.close()
+		connect.close()
 		return {
 				"error":True,
 				"message":"請輸入page 和 keyword"
@@ -36,6 +38,7 @@ def check():
 		#if page is not a number
 		else:
 			cursor.close() 
+			connect.close()
 			return {
 				"error":True,
 				"message":"請輸入數字"
@@ -48,10 +51,12 @@ def check():
 			search_page_data = cursor.fetchall()
 			search_page_data = handleImage(search_page_data)
 			cursor.close()
+			connect.close()
 			return {"nextPage":nextPage, "data":search_page_data},200
 		#if page number is not in valid range
 		else: 
 			cursor.close()
+			connect.close()
 			return {
 				"error":True,
 				"message":"請輸入正確的範圍"
@@ -62,6 +67,7 @@ def check():
 		search_keyword_data = cursor.fetchall()
 		if search_keyword_data == []:
 			cursor.close()
+			connect.close()
 			return {
 			"error":True,
 			"message":"無相關資料"
@@ -69,10 +75,12 @@ def check():
 		else:
 			search_keyword_data = handleImage(search_keyword_data)
 			cursor.close()
+			connect.close()
 			return {"datas": search_keyword_data},200
 	else:  # both page and keyword have data
 		if page.isdigit() == False:
 			cursor.close()
+			connect.close()
 			return {
 				"error":True,
 				"message":"請在頁數輸入正數字"
@@ -81,6 +89,7 @@ def check():
 		search_keyword_data = cursor.fetchall()
 		if search_keyword_data == []:
 			cursor.close()
+			connect.close()
 			return {
 				"error":True,
 				"message":"無相關資料"
@@ -95,9 +104,11 @@ def check():
 				search_both_data = cursor.fetchall()
 				search_both_data = handleImage(search_both_data)
 				cursor.close()
+				connect.close()
 				return {"nextPage":nextPage, "data":search_both_data},200
 			else:
 				cursor.close()
+				connect.close()
 				return {
 					"error":True,
 					"message":"請輸入正確的範圍"
@@ -105,6 +116,7 @@ def check():
 
 @attractions.route("/api/attraction/<attractionId>")
 def checkId(attractionId):
+	connect = connection_pool.get_connection()
 	cursor = connect.cursor(dictionary = True)
 	#取得資料庫裡總筆數
 	cursor.execute("SELECT COUNT(`id`) FROM `attraction`")
@@ -118,10 +130,12 @@ def checkId(attractionId):
 			searchId_data = cursor.fetchone()
 			searchId_data = handleImage(searchId_data)
 			cursor.close()
+			connect.close()
 			return {"data": searchId_data}
 		else:
 			#如果數字超過最大的id
 			cursor.close()
+			connect.close()
 			return {
 				"error":True,
 				"message":"請輸入正確的數字範圍"
@@ -129,6 +143,7 @@ def checkId(attractionId):
 	else:
 		#如果輸入的不是數字
 		cursor.close()
+		connect.close()
 		return {
 				"error":True,
 				"message":"請輸入正確的數字範圍"

@@ -13,7 +13,7 @@ connection_pool = pooling.MySQLConnectionPool(
                                 password=dbConfig["db_password"],
                                 database=dbConfig["db_database"])
 
-connect = connection_pool.get_connection()
+# connect = connection_pool.get_connection()
 # cursor = connect.cursor(dictionary = True)
 
 
