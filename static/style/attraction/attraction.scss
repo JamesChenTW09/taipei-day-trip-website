@@ -10,6 +10,7 @@ header {
   width: 100%;
   background-color: white;
   z-index: 20;
+  border-bottom: 1px solid #e7dcdc;
   .nav_top {
     width: 1200px;
     margin: auto;
@@ -44,7 +45,7 @@ header {
   grid-template-rows: 33px 15px 22px 20px 302px 11px 37px;
   margin: 37px auto 37px auto;
   color: #666666;
-  border-bottom: 1px solid #8a7878;
+  border-bottom: 1px solid #e7dcdc;
   .image_container {
     grid-column: 2/3;
     grid-row: 1/7;
@@ -59,7 +60,7 @@ header {
       position: relative;
       display: flex;
       justify-content: center;
-      .img_list_out {
+      .img_dot_out {
         margin: 0px 6px;
         width: 12px;
         height: 12px;
@@ -70,7 +71,7 @@ header {
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        .img_list_in {
+        .img_dot_in {
           position: absolute;
           width: 10px;
           height: 10px;
@@ -128,7 +129,7 @@ header {
       display: flex;
       align-items: center;
       label {
-        margin-right: 5px;
+        margin-right: 8px;
       }
       input {
         padding: 5px 0px;
@@ -188,8 +189,9 @@ header {
     }
   }
 }
+//image change animation
 .activeAnimation {
-  animation: move 0.7s forwards;
+  animation: move 0.6s forwards;
 }
 @keyframes move {
   from {
@@ -199,7 +201,7 @@ header {
     opacity: 1;
   }
 }
-
+//price change
 .time_active {
   display: none;
 }
@@ -268,7 +270,7 @@ footer {
   .main_container {
     width: 100%;
     grid-template-columns: 15px auto 15px;
-    grid-template-rows: auto 20px 33px 15px 22px 20px 300px;
+    grid-template-rows: auto 20px 33px 15px 22px 20px 310px 40px;
     .image_container {
       grid-column: 1/4;
       grid-row: 1/2;
@@ -285,7 +287,10 @@ footer {
     .tour_booking {
       grid-column: 2/3;
       grid-row: 7/8;
-      grid-template-rows: 15px 22px 15px 48px 15px 35px 15px 22px 15px 22px 25px 25px auto 41px;
+      grid-template-rows: 15px 22px 15px 48px 15px 35px 15px 22px 15px 22px 25px 20px 25px 15px;
+      button {
+        padding: 8px 18px;
+      }
     }
   }
 }

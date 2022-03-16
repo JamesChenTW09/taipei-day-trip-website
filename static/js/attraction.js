@@ -5,14 +5,26 @@ const select = (ele, all = false) => {
     return document.querySelector(ele);
   }
 };
-const presentFirstPage = () => {
-  mainTitle.innerText = name;
-  mainImg.style.backgroundImage = `url("${images[imageCount]}")`;
-  mainCateMrt.innerText = category + " at " + mrt;
-  section_intro.innerText = description;
-  section_address.innerText = address;
-  section_transport.innerText = transport;
-};
+
+//price click event
+(function () {
+  let clickContainer = select(".clickContainer", true);
+  let clickEffect = select(".clickEffect", true);
+  let tour_pricing = select(".tour_pricing p span");
+
+  clickContainer[0].addEventListener("click", () => {
+    clickEffect[1].classList.add("time_active");
+    clickEffect[0].classList.remove("time_active");
+    tour_pricing.textContent = "2000";
+  });
+
+  clickContainer[1].addEventListener("click", () => {
+    clickEffect[1].classList.remove("time_active");
+    clickEffect[0].classList.add("time_active");
+    tour_pricing.textContent = "2500";
+  });
+})();
+
 window.onload = () => {
   let attraction_id = window.location.href;
   attraction_id = attraction_id.split("attraction/")[1];
@@ -36,114 +48,100 @@ window.onload = () => {
       data = res.data;
       let { name, images, category, mrt, description, address, transport } =
         res.data;
-      // presentFirstPage();
-      mainImg.classList.add("activeAnimation");
-      mainTitle.innerText = name;
-      mainImg.style.backgroundImage = `url("${images[imageCount]}")`;
-      mainCateMrt.innerText = category + " at " + mrt;
-      section_intro.innerText = description;
-      section_address.innerText = address;
-      section_transport.innerText = transport;
-      setTimeout(function () {
-        mainImg.classList.remove("activeAnimation");
-      }, 1000);
+
+      add_remove_animation();
+      firstDataRender();
 
       //small dots create and click event
       for (let i = 0; i < data.images.length; i++) {
-        let imgs_list_out = document.createElement("div");
-        let imgs_list_in = document.createElement("div");
-        imgs_list_out.classList.add("img_list_out");
-        imgs_list_in.classList.add("img_list_in");
-        imgs_list_out.appendChild(imgs_list_in);
-        dotContainer.appendChild(imgs_list_out);
+        let imgs_dots_out = document.createElement("div");
+        let imgs_dots_in = document.createElement("div");
+        imgs_dots_out.classList.add("img_dot_out");
+        imgs_dots_in.classList.add("img_dot_in");
+        imgs_dots_out.appendChild(imgs_dots_in);
+        dotContainer.appendChild(imgs_dots_out);
 
-        imgs_list_out.addEventListener("click", () => {
-          setTimeout(function () {
-            mainImg.classList.remove("activeAnimation");
-          }, 15);
-          setTimeout(function () {
-            mainImg.classList.add("activeAnimation");
-            mainImg.style.backgroundImage = `url("${data.images[i]}")`;
-            imgs_list.forEach((item) => {
-              item.children[0].style.backgroundColor = "white";
-            });
-            imgs_list[i].children[0].style.backgroundColor = "black";
-            //make sure imageCount is always on the present image
-            imageCount = i;
-          }, 30);
+        imgs_dots_out.addEventListener("click", () => {
+          add_remove_animation(i);
+          imgs_dots.forEach((item) => {
+            dot_turn_white(imgs_dots, imageCount, item);
+          });
+          dot_turn_black(imgs_dots, i);
+          //make sure imageCount is always on the present image
+          imageCount = i;
         });
       }
 
       //arrow click event
-      let imgs_list = select(".img_list_out", true);
-      imgs_list[imageCount].children[0].style.backgroundColor = "black";
+      let imgs_dots = select(".img_dot_out", true);
+      dot_turn_black(imgs_dots, imageCount);
       right_arrow.addEventListener("click", (e) => {
-        setTimeout(function () {
-          mainImg.classList.remove("activeAnimation");
-        }, 15);
-        setTimeout(function () {
-          imgs_list[imageCount].children[0].style.backgroundColor = "white";
-          imageCount++;
-          if (imageCount < data.images.length) {
-            mainImg.classList.add("activeAnimation");
-            mainImg.style.backgroundImage = `url("${data.images[imageCount]}")`;
-            imgs_list[imageCount].children[0].style.backgroundColor = "black";
-          } else {
-            imageCount = 0;
-            mainImg.classList.add("activeAnimation");
-            mainImg.style.backgroundImage = `url("${data.images[imageCount]}")`;
-            imgs_list[imageCount].children[0].style.backgroundColor = "black";
-          }
-        }, 30);
+        dot_turn_white(imgs_dots, imageCount);
+        imageCount++;
+        if (imageCount < data.images.length) {
+          add_remove_animation();
+          dot_turn_black(imgs_dots, imageCount);
+        } else {
+          imageCount = 0;
+          add_remove_animation();
+          dot_turn_black(imgs_dots, imageCount);
+        }
       });
       left_arrow.addEventListener("click", (e) => {
-        setTimeout(function () {
-          mainImg.classList.remove("activeAnimation");
-        }, 15);
-        setTimeout(function () {
-          imgs_list[imageCount].children[0].style.backgroundColor = "white";
-          if (imageCount == 0) {
-            imageCount = data.images.length - 1;
-            mainImg.classList.add("activeAnimation");
-            mainImg.style.backgroundImage = `url("${data.images[imageCount]}")`;
-            imgs_list[imageCount].children[0].style.backgroundColor = "black";
-          } else {
-            imageCount--;
-            mainImg.classList.add("activeAnimation");
-            mainImg.style.backgroundImage = `url("${data.images[imageCount]}")`;
-            imgs_list[imageCount].children[0].style.backgroundColor = "black";
-          }
-        }, 30);
+        dot_turn_white(imgs_dots, imageCount);
+        if (imageCount == 0) {
+          imageCount = data.images.length - 1;
+          add_remove_animation();
+          dot_turn_black(imgs_dots, imageCount);
+        } else {
+          imageCount--;
+          add_remove_animation();
+          dot_turn_black(imgs_dots, imageCount);
+        }
       });
-      // window.setInterval(function () {
-      //   imgs_list[imageCount].children[0].style.backgroundColor = "white";
-      //   imageCount++;
-      //   if (imageCount < data.images.length) {
-      //     imageHandler(mainImg, imageCount);
-      //     imgs_list[imageCount].children[0].style.backgroundColor = "black";
-      //   } else {
-      //     imageCount = 0;
-      //     imageHandler(mainImg, imageCount);
-      //     imgs_list[imageCount].children[0].style.backgroundColor = "black";
-      //   }
-      // }, 3000);
+      //auto change image
+      window.setInterval(function () {
+        dot_turn_white(imgs_dots, imageCount);
+        imageCount++;
+        if (imageCount < data.images.length) {
+          add_remove_animation();
+          dot_turn_black(imgs_dots, imageCount);
+        } else {
+          imageCount = 0;
+          add_remove_animation();
+          dot_turn_black(imgs_dots, imageCount);
+        }
+      }, 10000);
+
+      //first page data render
+      function firstDataRender() {
+        mainTitle.innerText = name;
+        mainCateMrt.innerText = category + " at " + mrt;
+        section_intro.innerText = description;
+        section_address.innerText = address;
+        section_transport.innerText = transport;
+      }
+      //image fetch and add/remove animation
+      function add_remove_animation(i) {
+        if (i == 0 || i) {
+          mainImg.classList.add("activeAnimation");
+          mainImg.style.backgroundImage = `url("${images[i]}")`;
+        } else {
+          mainImg.classList.add("activeAnimation");
+          mainImg.style.backgroundImage = `url("${images[imageCount]}")`;
+        }
+        return setTimeout(function () {
+          mainImg.classList.remove("activeAnimation");
+        }, 300);
+      }
+      function dot_turn_black(imgs_dots, imageCount) {
+        imgs_dots[imageCount].children[0].style.backgroundColor = "black";
+      }
+      function dot_turn_white(imgs_dots, imageCount, item = false) {
+        if (item) {
+          item.children[0].style.backgroundColor = "white";
+        }
+        imgs_dots[imageCount].children[0].style.backgroundColor = "white";
+      }
     });
 };
-//價錢click event
-(function () {
-  let clickContainer = select(".clickContainer", true);
-  let clickEffect = select(".clickEffect", true);
-  let tour_pricing = select(".tour_pricing p span");
-
-  clickContainer[0].addEventListener("click", () => {
-    clickEffect[1].classList.add("time_active");
-    clickEffect[0].classList.remove("time_active");
-    tour_pricing.textContent = "2000";
-  });
-
-  clickContainer[1].addEventListener("click", () => {
-    clickEffect[1].classList.remove("time_active");
-    clickEffect[0].classList.add("time_active");
-    tour_pricing.textContent = "2500";
-  });
-})();

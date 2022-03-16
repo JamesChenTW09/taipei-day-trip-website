@@ -12,6 +12,7 @@ header {
   width: 100%;
   background-color: white;
   z-index: 20;
+  border-bottom: 1px solid #e7dcdc;
 }
 header .nav_top {
   width: 1200px;
@@ -46,7 +47,7 @@ header .nav_top ul li {
   grid-template-rows: 33px 15px 22px 20px 302px 11px 37px;
   margin: 37px auto 37px auto;
   color: #666666;
-  border-bottom: 1px solid #8a7878;
+  border-bottom: 1px solid #e7dcdc;
 }
 .main_container .image_container {
   grid-column: 2/3;
@@ -63,7 +64,7 @@ header .nav_top ul li {
   display: flex;
   justify-content: center;
 }
-.main_container .image_container .dotContainer .img_list_out {
+.main_container .image_container .dotContainer .img_dot_out {
   margin: 0px 6px;
   width: 12px;
   height: 12px;
@@ -75,7 +76,7 @@ header .nav_top ul li {
   align-items: center;
   cursor: pointer;
 }
-.main_container .image_container .dotContainer .img_list_out .img_list_in {
+.main_container .image_container .dotContainer .img_dot_out .img_dot_in {
   position: absolute;
   width: 10px;
   height: 10px;
@@ -130,7 +131,7 @@ header .nav_top ul li {
   align-items: center;
 }
 .main_container .tour_booking .date_choosing label {
-  margin-right: 5px;
+  margin-right: 8px;
 }
 .main_container .tour_booking .date_choosing input {
   padding: 5px 0px;
@@ -189,8 +190,8 @@ header .nav_top ul li {
 }
 
 .activeAnimation {
-  -webkit-animation: move 0.7s forwards;
-          animation: move 0.7s forwards;
+  -webkit-animation: move 0.6s forwards;
+          animation: move 0.6s forwards;
 }
 
 @-webkit-keyframes move {
@@ -278,7 +279,7 @@ footer p {
   .main_container {
     width: 100%;
     grid-template-columns: 15px auto 15px;
-    grid-template-rows: auto 20px 33px 15px 22px 20px 300px;
+    grid-template-rows: auto 20px 33px 15px 22px 20px 310px 40px;
   }
   .main_container .image_container {
     grid-column: 1/4;
@@ -296,6 +297,9 @@ footer p {
   .main_container .tour_booking {
     grid-column: 2/3;
     grid-row: 7/8;
-    grid-template-rows: 15px 22px 15px 48px 15px 35px 15px 22px 15px 22px 25px 25px auto 41px;
+    grid-template-rows: 15px 22px 15px 48px 15px 35px 15px 22px 15px 22px 25px 20px 25px 15px;
+  }
+  .main_container .tour_booking button {
+    padding: 8px 18px;
   }
 }/*# sourceMappingURL=attraction.css.map */
