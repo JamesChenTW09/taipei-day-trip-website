@@ -1,83 +1,52 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <meta name="robots" content="index, follow" />
-    <meta name="description" content="" />
-    <meta name="author" content="James Chen" />
-    <link rel="stylesheet" href="/static/style/attraction/attraction.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
-      rel="stylesheet"
+<link rel="stylesheet" href="/static/style/attraction/attraction.css" />
+{% extends "header.html" %} {% block content %}
+<main class="main_container">
+  <div class="image_container">
+    <img
+      class="right_arrow"
+      src="/static/photos/btn_rightArrowright.png"
+      alt=""
     />
-  </head>
-  <body>
-    <header>
-      <nav class="nav_top">
-        <h1>台北一日遊</h1>
-        <ul>
-          <li>預定行程</li>
-          <li>登入/註冊</li>
-        </ul>
-      </nav>
-    </header>
-    <main class="main_container">
-      <div class="image_container">
-        <img
-          class="right_arrow"
-          src="/static/photos/btn_rightArrowright.png"
-          alt=""
-        />
-        <img
-          class="left_arrow"
-          src="/static/photos/btn_leftArrowleft.png"
-          alt=""
-        />
-        <div class="dotContainer"></div>
+    <img class="left_arrow" src="/static/photos/btn_leftArrowleft.png" alt="" />
+    <div class="dotContainer"></div>
+  </div>
+  <h3></h3>
+  <p class="cate_and_mrt"></p>
+  <div class="tour_booking">
+    <h4>訂購導覽行程</h4>
+    <p>以此景點為中心的一日行程，帶您探索城市角落故事</p>
+    <div class="date_choosing">
+      <label for="">選擇日期&nbsp;:</label>
+      <input type="date" />
+    </div>
+    <div class="time_choosing">
+      <p>選擇時間&nbsp;:</p>
+      <div class="clickContainer">
+        <div class="clickEffect"></div>
       </div>
-      <h3></h3>
-      <p class="cate_and_mrt"></p>
-      <div class="tour_booking">
-        <h4>訂購導覽行程</h4>
-        <p>以此景點為中心的一日行程，帶您探索城市角落故事</p>
-        <div class="date_choosing">
-          <label for="">選擇日期&nbsp;:</label>
-          <input type="date" />
-        </div>
-        <div class="time_choosing">
-          <p>選擇時間&nbsp;:</p>
-          <div class="clickContainer">
-            <div class="clickEffect"></div>
-          </div>
-          <p class="time_separator">上半天</p>
-          <div class="clickContainer">
-            <div class="clickEffect time_active"></div>
-          </div>
-          <p>下半天</p>
-        </div>
-        <div class="tour_pricing">
-          <p>導覽費用&nbsp;:</p>
-          <p>新台幣 <span>2000</span> 元</p>
-        </div>
-        <button>開始預訂行程</button>
+      <p class="time_separator">上半天</p>
+      <div class="clickContainer">
+        <div class="clickEffect time_active"></div>
       </div>
-    </main>
-    <section class="tour_intro_container">
-      <p class="tour_intro"></p>
-      <p style="font-weight: bold">景點地址&nbsp;:</p>
-      <p class="tour_address"></p>
-      <p style="font-weight: bold">交通方式&nbsp;:</p>
-      <p class="tour_transport"></p>
-    </section>
-    <footer>
-      <p>COPYRIGHT © 2021 台北一日遊!</p>
-    </footer>
-    <div class="try" style="background-position: center"></div>
-  </body>
-  <script src="/static/js/attraction.js"></script>
-</html>
+      <p>下半天</p>
+    </div>
+    <div class="tour_pricing">
+      <p>導覽費用&nbsp;:</p>
+      <p>新台幣 <span>2000</span> 元</p>
+    </div>
+    <button>開始預訂行程</button>
+  </div>
+</main>
+<section class="tour_intro_container">
+  <p class="tour_intro"></p>
+  <p style="font-weight: bold">景點地址&nbsp;:</p>
+  <p class="tour_address"></p>
+  <p style="font-weight: bold">交通方式&nbsp;:</p>
+  <p class="tour_transport"></p>
+</section>
+<footer>
+  <p>COPYRIGHT © 2021 台北一日遊!</p>
+</footer>
+{% endblock %} {% block js %}
+<script src="/static/js/attraction.js"></script>
+{% endblock %}

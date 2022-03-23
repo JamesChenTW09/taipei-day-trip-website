@@ -83,6 +83,7 @@ header .nav_top ul li {
   border-radius: 100px;
 }
 .main_container .image_container .right_arrow {
+  opacity: 0.6;
   width: 36px;
   height: 36px;
   top: 50%;
@@ -91,6 +92,7 @@ header .nav_top ul li {
   position: absolute;
 }
 .main_container .image_container .left_arrow {
+  opacity: 0.6;
   width: 36px;
   height: 36px;
   position: absolute;
@@ -134,7 +136,7 @@ header .nav_top ul li {
   margin-right: 8px;
 }
 .main_container .tour_booking .date_choosing input {
-  padding: 5px 0px;
+  padding: 5px 10px;
 }
 .main_container .tour_booking .time_choosing {
   grid-column: 2/2;

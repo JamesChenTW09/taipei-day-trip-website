@@ -1,20 +1,3 @@
-const select = (ele, all = false) => {
-  if (all) {
-    return document.querySelectorAll(ele);
-  } else {
-    return document.querySelector(ele);
-  }
-};
-const on = (type, ele, listener, all = false) => {
-  let selectEle = select(ele, all);
-  if (selectEle) {
-    if (all) {
-      selectEle.forEach((e) => e.addEventListener(type, listener));
-    } else {
-      selectEle.addEventListener(type, listener);
-    }
-  }
-};
 //handle DOM of adding 12 datas in main
 function sortData(data, i) {
   let firstImage = data[i]["images"][0];

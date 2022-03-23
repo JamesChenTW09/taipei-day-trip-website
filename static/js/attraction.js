@@ -1,31 +1,5 @@
-const select = (ele, all = false) => {
-  if (all) {
-    return document.querySelectorAll(ele);
-  } else {
-    return document.querySelector(ele);
-  }
-};
-
-//price click event
+//image changing event, incluing arrow event and small dots events
 (function () {
-  let clickContainer = select(".clickContainer", true);
-  let clickEffect = select(".clickEffect", true);
-  let tour_pricing = select(".tour_pricing p span");
-
-  clickContainer[0].addEventListener("click", () => {
-    clickEffect[1].classList.add("time_active");
-    clickEffect[0].classList.remove("time_active");
-    tour_pricing.textContent = "2000";
-  });
-
-  clickContainer[1].addEventListener("click", () => {
-    clickEffect[1].classList.remove("time_active");
-    clickEffect[0].classList.add("time_active");
-    tour_pricing.textContent = "2500";
-  });
-})();
-
-window.onload = () => {
   let attraction_id = window.location.href;
   attraction_id = attraction_id.split("attraction/")[1];
 
@@ -41,14 +15,11 @@ window.onload = () => {
   let imageCount = 0;
 
   fetch(`/api/attraction/${attraction_id}`)
-    .then((res) => {
-      return res.json();
-    })
+    .then((res) => res.json())
     .then((res) => {
       data = res.data;
       let { name, images, category, mrt, description, address, transport } =
         res.data;
-
       add_remove_animation();
       firstDataRender();
 
@@ -144,4 +115,23 @@ window.onload = () => {
         imgs_dots[imageCount].children[0].style.backgroundColor = "white";
       }
     });
-};
+})();
+
+//circle price click event
+(function () {
+  let clickContainer = select(".clickContainer", true);
+  let clickEffect = select(".clickEffect", true);
+  let tour_pricing = select(".tour_pricing p span");
+
+  clickContainer[0].addEventListener("click", () => {
+    clickEffect[1].classList.add("time_active");
+    clickEffect[0].classList.remove("time_active");
+    tour_pricing.textContent = "2000";
+  });
+
+  clickContainer[1].addEventListener("click", () => {
+    clickEffect[1].classList.remove("time_active");
+    clickEffect[0].classList.add("time_active");
+    tour_pricing.textContent = "2500";
+  });
+})();
