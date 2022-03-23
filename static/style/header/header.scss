@@ -32,6 +32,9 @@ header {
         margin: 10px 0px;
         padding: 0px 10px;
         font-size: 16px;
+        &:nth-child(3) {
+          display: none;
+        }
         &:hover {
           color: #9c9a9a;
         }

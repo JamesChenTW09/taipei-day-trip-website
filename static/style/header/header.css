@@ -38,6 +38,9 @@ header .nav_top ul li {
   padding: 0px 10px;
   font-size: 16px;
 }
+header .nav_top ul li:nth-child(3) {
+  display: none;
+}
 header .nav_top ul li:hover {
   color: #9c9a9a;
 }

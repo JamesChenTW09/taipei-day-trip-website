@@ -27,14 +27,13 @@ window.onload = () => {
   //check user is login or not and set event handler to login/logout li
   fetchData("/api/user", "GET").then((res) => {
     if (!res.data) {
-      logInAndOutText("登入/註冊");
       button[1].addEventListener("click", (e) => {
         logInSection.classList.add("scaleUp");
         logInSectionShow();
       });
     } else {
-      logInAndOutText("登出系統");
-      button[1].addEventListener("click", (e) => {
+      logInAndOutButton();
+      button[2].addEventListener("click", (e) => {
         fetchData("/api/user", "DELETE").then((res) => {
           location.reload();
         });
@@ -143,8 +142,9 @@ window.onload = () => {
   });
 
   //function setup
-  function logInAndOutText(text) {
-    button[1].textContent = text;
+  function logInAndOutButton() {
+    button[1].style.display = "none";
+    button[2].style.display = "block";
   }
   function crossEffect(action) {
     blackBackground.style.height = "0px";
