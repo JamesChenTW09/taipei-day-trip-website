@@ -49,5 +49,12 @@ connection_pool = pooling.MySQLConnectionPool(
 #     value = [name, category, description, address, transport, mrt, latitude, longitude, final_image]
 #     cursor.execute(insert, value)
 #     connect.commit()
-        
+    
+#新增會員table
+# connect = connection_pool.get_connection()
+# cursor = connect.cursor()
+# cursor.execute("CREATE TABLE `user`(`id` INT PRIMARY KEY AUTO_INCREMENT,`name` VARCHAR(20),`email` TEXT,`password` VARCHAR(50));")
+# cursor.execute("INSERT INTO `user`(`name`, `email`, `password`) VALUES('test1', 'test1@test.com', 'test1');")
+# connect.commit()
+
 

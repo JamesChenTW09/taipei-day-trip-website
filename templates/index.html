@@ -1,55 +1,22 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <meta name="robots" content="index, follow" />
-    <meta name="description" content="" />
-    <meta name="author" content="James Chen" />
-    <link rel="stylesheet" href="/static/style/index/index.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <nav class="nav_top">
-        <h1>台北一日遊</h1>
-        <ul>
-          <li>預定行程</li>
-          <li>登入/註冊</li>
-        </ul>
-      </nav>
-    </header>
+<link rel="stylesheet" href="/static/style/index/index.css" />
+{% extends "header.html" %} {% block content %}
+<section class="main_banner">
+  <div class="txt_and_search">
+    <h2>輕鬆享受台北一日悠閒</h2>
+    <p>探索每個角落，體驗城市的深度旅遊行程</p>
+    <div class="search_area">
+      <input type="text" placeholder="輸入景點名稱查詢" />
+      <button class="search_button">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+  </div>
+</section>
+<main></main>
+<footer>
+  <p>COPYRIGHT © 2021 台北一日遊!</p>
+</footer>
 
-    <section class="main_banner">
-      <div class="txt_and_search">
-        <h2>輕鬆享受台北一日悠閒</h2>
-        <p>探索每個角落，體驗城市的深度旅遊行程</p>
-        <div class="search_area">
-          <input type="text" placeholder="輸入景點名稱查詢" />
-          <button class="search_button">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-    <main></main>
-    <footer>
-      <p>COPYRIGHT © 2021 台北一日遊!</p>
-    </footer>
-  </body>
-  <script src="/static/js/index.js"></script>
-</html>
+{% endblock %} {% block js %}
+<script src="/static/js/index.js"></script>
+{% endblock %}
