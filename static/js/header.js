@@ -147,7 +147,7 @@ window.onload = () => {
     button[2].style.display = "block";
   }
   function crossEffect(action) {
-    blackBackground.style.height = "0px";
+    blackBackground.style.height = "";
     action.style.opacity = "0";
     action.style.zIndex = "-10";
   }
