@@ -84,6 +84,46 @@
         }
       }, 10000);
 
+      //start booking button and direct to booking page***********
+      on("click", ".tour_booking button", (e) => {
+        if (select(".nav_top ul li", true)[2].style.display === "") {
+          select(".logIn").classList.add("scaleUp");
+          logInSectionShow();
+        } else {
+          const dateInput = select(".date_choosing input");
+          const priceInput = select(".tour_pricing p span");
+          let nowDate = new Date().toLocaleDateString();
+          let newDateInput = new Date(dateInput.value).toLocaleDateString();
+
+          if (newDateInput < nowDate) {
+            dateErrorChoose("請輸入正確的日期!!");
+            return;
+          } else if (dateInput.value === "") {
+            dateErrorChoose("日期忘記填寫囉!!");
+          } else {
+            const bookingData = {
+              attractionId: data["id"],
+              date: dateInput.value,
+              time: priceInput.textContent == "2500" ? "下半天" : "上半天",
+              price: priceInput.textContent,
+            };
+            fetchWithBody("/api/booking", "POST", bookingData).then((res) => {
+              if (res.error) {
+                dateErrorChoose("請輸入正確的日期!!");
+              } else {
+                location.href = "/booking";
+              }
+            });
+          }
+        }
+      });
+      //show error message
+      function dateErrorChoose(message) {
+        const bookErrorMessage = select(".bookErrorMessage");
+        bookErrorMessage.innerText = message;
+        bookErrorMessage.style.display = "block";
+      }
+
       //first page data render
       function firstDataRender() {
         mainTitle.innerText = name;

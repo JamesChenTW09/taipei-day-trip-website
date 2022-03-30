@@ -9,6 +9,7 @@ header {
   width: 100%;
   background-color: white;
   z-index: 20;
+  border-bottom: 1px solid #e6e5e5;
   .nav_top {
     width: 1200px;
     margin: auto;
@@ -277,6 +278,19 @@ header {
     width: 100%;
     .nav_top {
       width: 100%;
+    }
+  }
+}
+@media (max-width: 600px) {
+  header {
+    .nav_top {
+      h1 {
+        width: 175px;
+        font-size: 30px;
+        color: #448899;
+        margin: 10px 0px;
+        padding-left: 10px;
+      }
     }
   }
 }

@@ -15,6 +15,39 @@ let on = (type, ele, listener, all = false) => {
     }
   }
 };
+function logInSectionShow() {
+  select(".blackBackground").style.height = select("body").offsetHeight + "px";
+  select(".logIn").style.opacity = "1";
+  select(".logIn").style.zIndex = "30";
+  x;
+  setTimeout(() => {
+    select(".logIn").classList.remove("scaleUp");
+  }, 400);
+}
+async function fetchData(url, method) {
+  return await fetch(url, {
+    method: method,
+  })
+    .then((res) => res.json())
+    .catch((e) => {
+      console.log("There is a problem");
+    });
+}
+
+async function fetchWithBody(url, method, body) {
+  return await fetch(url, {
+    method: method,
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((e) => {
+      console.log("There is a problem");
+    });
+}
+
 //membership event handler
 window.onload = () => {
   const signUpMessage = select(".signUpMessage");
@@ -27,12 +60,19 @@ window.onload = () => {
   //check user is login or not and set event handler to login/logout li
   fetchData("/api/user", "GET").then((res) => {
     if (!res.data) {
+      button[0].addEventListener("click", (e) => {
+        logInSection.classList.add("scaleUp");
+        logInSectionShow();
+      });
       button[1].addEventListener("click", (e) => {
         logInSection.classList.add("scaleUp");
         logInSectionShow();
       });
     } else {
       logInAndOutButton();
+      button[0].addEventListener("click", (e) => {
+        location.href = "/booking";
+      });
       button[2].addEventListener("click", (e) => {
         fetchData("/api/user", "DELETE").then((res) => {
           location.reload();
@@ -172,42 +212,11 @@ window.onload = () => {
       signUpMessage.innerText = text;
     }
   }
-  async function fetchData(url, method) {
-    return await fetch(url, {
-      method: method,
-    })
-      .then((res) => res.json())
-      .catch((e) => {
-        console.log("There is a problem");
-      });
-  }
-
-  async function fetchWithBody(url, method, body) {
-    return await fetch(url, {
-      method: method,
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .catch((e) => {
-        console.log("There is a problem");
-      });
-  }
   function setValueEmpty() {
     select(".logInEmail").value = "";
     select(".logInPassword").value = "";
     select(".signUpName").value = "";
     select(".signUpEmail").value = "";
     select(".signUpPassword").value = "";
-  }
-  function logInSectionShow() {
-    blackBackground.style.height = body.offsetHeight + "px";
-    logInSection.style.opacity = "1";
-    logInSection.style.zIndex = "30";
-    setTimeout(() => {
-      logInSection.classList.remove("scaleUp");
-    }, 400);
   }
 };

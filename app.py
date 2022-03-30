@@ -3,6 +3,7 @@ from flask import *
 from routes.api.attraction import attractions
 from routes.api.user import users
 from routes.pages.pages import pages
+from routes.api.booking import bookings
 
 
 app=Flask(__name__)
@@ -17,6 +18,7 @@ app.secret_key="any string but secret"
 app.register_blueprint(users, url_prefix='')
 app.register_blueprint(attractions, url_prefix='')
 app.register_blueprint(pages, url_prefix='')
+app.register_blueprint(bookings, url_prefix='')
 
 
 
