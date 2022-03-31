@@ -4,7 +4,7 @@
       location.href = "/";
     } else {
       data = res.data;
-      checkUserValid(data);
+      setInitialData(data);
     }
   });
   fetchData("api/booking", "GET").then((res) => {
@@ -17,6 +17,7 @@
   });
   on("click", ".trashIcon", deleteBooking);
   //function
+  //set css for no booking data
   function noBookingData() {
     select("footer").style.height = "60vh";
     select("footer p").style.top = "45px";
@@ -46,7 +47,7 @@
       select("footer p").style.top = "45px";
     });
   }
-  function checkUserValid(data) {
+  function setInitialData(data) {
     select(".contactName input").setAttribute("value", data.name);
     select(".contactEmail input").setAttribute("value", data.email);
     select(".nullBookingName").innerText = data.name;

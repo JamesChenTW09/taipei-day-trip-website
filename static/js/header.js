@@ -55,7 +55,6 @@ window.onload = () => {
   const signUpSection = select(".signUp");
   const blackBackground = select(".blackBackground");
   const logInSection = select(".logIn");
-  const body = select("body");
   const button = select(".nav_top ul li", true);
   //check user is login or not and set event handler to login/logout li
   fetchData("/api/user", "GET").then((res) => {
