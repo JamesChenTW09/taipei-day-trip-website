@@ -13,7 +13,7 @@ def postBooking():
     if data["date"] == "":
         return {
             "error":True,
-            "message":"資料未填寫完整!!!"
+            "message":"請輸入正確的日期!!!"
         },400
     elif "id" not in session:
          return {
@@ -75,3 +75,11 @@ def deleteBooking():
         session.pop("tourName")
         session.pop("tourImage")
         return {"ok":True},200   
+
+@bookings.errorhandler(500)
+def internal_server_error(e):
+    error={
+        "error":True,
+        "message":"Server has problem"
+    }
+    return error,500

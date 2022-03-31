@@ -128,7 +128,7 @@ window.onpageshow = function (event) {
             };
             fetchWithBody("/api/booking", "POST", bookingData).then((res) => {
               if (res.error) {
-                bookErrorChoose("請輸入正確的日期!!");
+                bookErrorChoose(res.message);
               } else {
                 location.href = "/booking";
               }
