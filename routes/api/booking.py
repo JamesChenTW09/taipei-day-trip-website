@@ -45,6 +45,10 @@ def getBooking():
     elif "id" not in session:
         return{"error":True,
         "message":"請先登入"},403
+    if session["tourTime"] == "上半天":
+        session["tourTime"] = "早上9點到中午12點"
+    if session["tourTime"] == "下半天":
+        session["tourTime"] = "下午2點到下午5點"   
     return {
         "data":{
             "attraction":{      
