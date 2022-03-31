@@ -19,7 +19,7 @@
   //function
   //set css for no booking data
   function noBookingData() {
-    select("footer").style.height = "60vh";
+    select("footer").style.height = "61vh";
     select("footer p").style.top = "45px";
     select("main").style.display = "none";
     select(".bookingContact").style.display = "none";
@@ -43,7 +43,7 @@
       select(".bookingContact").style.display = "none";
       select(".noBooking").style.display = "block";
       select(".nullBookingName").innerText = userName;
-      select("footer").style.height = "60vh";
+      select("footer").style.height = "61vh";
       select("footer p").style.top = "45px";
     });
   }
