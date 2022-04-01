@@ -1,20 +1,14 @@
 (function () {
-  select("body").style.display = "none";
-  // setTimeout(() => {
-  //   if (select(".nav_top ul li", true)[1].style.display === "block") {
-  //     location.href = "/";
-  //   } else {
-  //     select("body").style.display = "block";
-  //   }
-  // }, 500);
-
+  select("body").style.backgroundColor = "white";
+  select("body").style.zIndex = "50";
   fetchData("api/user", "GET").then((res) => {
     if (!res.data) {
       location.href = "/";
     } else {
       data = res.data;
       setInitialData(data);
-      select("body").style.display = "block";
+      select("body").style.zIndex = "0";
+      select(".loading").style.display = "none";
     }
   });
   fetchData("api/booking", "GET").then((res) => {
