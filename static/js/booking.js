@@ -3,8 +3,10 @@
     if (select(".nav_top ul li", true)[1].style.display === "block") {
       location.href = "/";
     }
+  }, 0);
+  setTimeout(() => {
     select(".loading").style.display = "none";
-  }, 500);
+  }, 300);
 
   fetchData("api/user", "GET").then((res) => {
     if (!res.data) {
