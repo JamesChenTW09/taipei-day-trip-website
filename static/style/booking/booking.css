@@ -5,11 +5,6 @@
   color: #666666;
 }
 
-body {
-  background-color: white;
-  z-index: 50;
-}
-
 .loading {
   position: fixed;
   display: block;

@@ -1,13 +1,10 @@
 (function () {
-  select("body").style.backgroundColor = "white";
-  select("body").style.zIndex = "50";
   fetchData("api/user", "GET").then((res) => {
     if (!res.data) {
       location.href = "/";
     } else {
       data = res.data;
       setInitialData(data);
-      select("body").style.zIndex = "0";
       select(".loading").style.display = "none";
     }
   });
