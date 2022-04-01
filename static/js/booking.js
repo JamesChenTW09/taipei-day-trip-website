@@ -6,7 +6,7 @@
   }, 0);
   setTimeout(() => {
     select(".loading").style.display = "none";
-  }, 300);
+  }, 1000);
 
   fetchData("api/user", "GET").then((res) => {
     if (!res.data) {
