@@ -1,4 +1,8 @@
 (function () {
+  setTimeout(() => {
+    select(".loading").style.display = "none";
+  }, 500);
+
   fetchData("api/user", "GET").then((res) => {
     if (!res.data) {
       location.href = "/";
