@@ -1,5 +1,8 @@
 (function () {
   setTimeout(() => {
+    if (select(".nav_top ul li", true)[1].style.display === "block") {
+      location.href = "/";
+    }
     select(".loading").style.display = "none";
   }, 500);
 

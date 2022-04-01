@@ -19,7 +19,6 @@ function logInSectionShow() {
   select(".blackBackground").style.height = select("body").offsetHeight + "px";
   select(".logIn").style.opacity = "1";
   select(".logIn").style.zIndex = "30";
-  x;
   setTimeout(() => {
     select(".logIn").classList.remove("scaleUp");
   }, 400);
