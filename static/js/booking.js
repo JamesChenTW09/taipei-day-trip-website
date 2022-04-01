@@ -1,12 +1,12 @@
 (function () {
   select("body").style.display = "none";
-  setTimeout(() => {
-    if (select(".nav_top ul li", true)[1].style.display === "block") {
-      location.href = "/";
-    } else {
-      select("body").style.display = "block";
-    }
-  }, 500);
+  // setTimeout(() => {
+  //   if (select(".nav_top ul li", true)[1].style.display === "block") {
+  //     location.href = "/";
+  //   } else {
+  //     select("body").style.display = "block";
+  //   }
+  // }, 500);
 
   fetchData("api/user", "GET").then((res) => {
     if (!res.data) {
@@ -14,6 +14,7 @@
     } else {
       data = res.data;
       setInitialData(data);
+      select("body").style.display = "block";
     }
   });
   fetchData("api/booking", "GET").then((res) => {
