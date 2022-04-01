@@ -1,12 +1,12 @@
 (function () {
+  select("body").style.display = "none";
   setTimeout(() => {
     if (select(".nav_top ul li", true)[1].style.display === "block") {
       location.href = "/";
+    } else {
+      select("body").style.display = "block";
     }
-  }, 0);
-  setTimeout(() => {
-    select(".loading").style.display = "none";
-  }, 1000);
+  }, 500);
 
   fetchData("api/user", "GET").then((res) => {
     if (!res.data) {
