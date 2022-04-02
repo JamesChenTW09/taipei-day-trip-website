@@ -5,41 +5,6 @@
   font-family: "Noto Sans TC", sans-serif;
 }
 
-header {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: white;
-  z-index: 20;
-  border-bottom: 1px solid #e7dcdc;
-}
-header .nav_top {
-  width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-header .nav_top h1 {
-  width: 150px;
-  font-size: 30px;
-  color: #448899;
-  margin: 10px 0px;
-}
-header .nav_top ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0px;
-}
-header .nav_top ul li {
-  color: #666666;
-  margin: 10px 0px;
-  padding: 0px 10px;
-  font-size: 16px;
-}
-
 .main_container {
   width: 1200px;
   display: grid;
@@ -190,6 +155,14 @@ header .nav_top ul li {
   font-size: 19px;
   cursor: pointer;
 }
+.main_container .tour_booking .bookErrorMessage {
+  grid-column: 2/3;
+  grid-row: 14/15;
+  margin-top: 5px;
+  padding-left: 5px;
+  color: red;
+  display: none;
+}
 
 .activeAnimation {
   -webkit-animation: move 0.6s forwards;
@@ -245,6 +218,39 @@ footer p {
   font-weight: 700;
 }
 
+@-webkit-keyframes buttonScaleDown {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes buttonScaleDown {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+@-webkit-keyframes buttonScaleUp {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes buttonScaleUp {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 @media (max-width: 1220px) {
   header {
     width: 100%;
@@ -309,7 +315,11 @@ footer p {
   }
 }
 @media (max-width: 437px) {
+  .main_container {
+    grid-template-rows: auto 20px 33px 15px 22px 20px 310px 25px;
+  }
   .main_container .tour_booking {
+    grid-row: 7/9;
     grid-template-rows: 15px 22px 15px 48px 15px 35px 15px 22px 15px 22px 25px 20px 25px 15px;
   }
 }/*# sourceMappingURL=attraction.css.map */

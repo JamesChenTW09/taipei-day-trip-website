@@ -1,4 +1,8 @@
-//image changing event, incluing arrow event and small dots events
+window.onpageshow = function (event) {
+  if (event.persisted) {
+    window.location.reload();
+  }
+};
 (function () {
   let attraction_id = window.location.href;
   attraction_id = attraction_id.split("attraction/")[1];
@@ -83,6 +87,68 @@
           dot_turn_black(imgs_dots, imageCount);
         }
       }, 10000);
+
+      //start booking button and direct to booking page
+      on("click", ".tour_booking button", (e) => {
+        //check is login or not
+        if (select(".nav_top ul li", true)[2].style.display === "") {
+          select(".logIn").classList.add("scaleUp");
+          logInSectionShow();
+        } else {
+          const dateInput = select(".date_choosing input");
+          const priceInput = select(".tour_pricing p span");
+          let nowHour = new Date().getHours();
+          let bookHour = select(".clickEffect", true);
+          let nowDate = new Date().toLocaleDateString();
+          let newDateInput = new Date(dateInput.value).toLocaleDateString();
+          if (newDateInput < nowDate) {
+            bookErrorChoose("請輸入正確的日期!!");
+            return;
+          } else if (dateInput.value === "") {
+            bookErrorChoose("日期忘記選擇囉!!");
+            return;
+          } else if (
+            newDateInput === nowDate &&
+            bookHour[0].classList.contains("time_active") &&
+            nowHour >= 13
+          ) {
+            bookErrorChoose("當日下半天活動請在1點前預訂!!");
+          } else if (
+            newDateInput === nowDate &&
+            bookHour[1].classList.contains("time_active") &&
+            nowHour >= 9
+          ) {
+            bookErrorChoose("當日上半天活動請在9點前預訂!!");
+          } else {
+            const bookingData = {
+              attractionId: data["id"],
+              date: dateInput.value,
+              time: priceInput.textContent == "2500" ? "下半天" : "上半天",
+              price: priceInput.textContent,
+            };
+            fetchWithBody("/api/booking", "POST", bookingData).then((res) => {
+              if (res.error) {
+                bookErrorChoose(res.message);
+              } else {
+                location.href = "/booking";
+              }
+            });
+          }
+        }
+      });
+      //button animation
+      on("mousedown", ".tour_booking button", (e) => {
+        e.target.style.animation = "buttonScaleDown 0.2s forwards";
+      });
+      on("mouseup", ".tour_booking button", (e) => {
+        e.target.style.animation = "buttonScaleUp 0.2s forwards";
+      });
+      //show error message
+      function bookErrorChoose(message) {
+        const bookErrorMessage = select(".bookErrorMessage");
+        bookErrorMessage.innerText = message;
+        bookErrorMessage.style.display = "block";
+      }
 
       //first page data render
       function firstDataRender() {

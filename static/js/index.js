@@ -57,6 +57,11 @@ window.onscroll = () => {
           sortData(data, i);
         }
         fetchComplete = true;
+        const blackBackground = select(".blackBackground");
+        const body = select("body");
+        if (blackBackground.style.height !== "") {
+          blackBackground.style.height = body.offsetHeight + "px";
+        }
       });
   }
 };

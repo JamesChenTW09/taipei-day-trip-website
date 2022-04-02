@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/static/style/booking/booking.css" />
+{% extends "header.html" %} {% block content %}
+<div class="loading">
+  <div class="loadingImage"></div>
+</div>
+<div class="noBooking">
+  <h3>您好，<span class="nullBookingName"></span>，待預定的行程如下 :</h3>
+  <p>目前沒有任何待預定的行程</p>
+</div>
+<main>
+  <h3>您好，<span class="bookingName"></span>，待預定的行程如下 :</h3>
+  <section class="bookingInfo">
+    <div class="imgContainer">
+      <div class="bookingImage"></div>
+    </div>
+    <div class="bookingText">
+      <div class="trashIcon"></div>
+      <h4>台北一日遊 :<span class="bookingTitle"></span></h4>
+      <p class="bookingDate">日期：<span></span></p>
+      <p class="bookingTime">時間：<span></span></p>
+      <p class="bookingPrice">費用：<span></span></p>
+      <p class="bookingPlace">地點：<span></span></p>
+    </div>
+  </section>
+</main>
+<section class="bookingContact">
+  <p class="contactData">您的聯絡資訊</p>
+  <div class="contactName">
+    <label for="">聯絡姓名：</label>
+    <input type="text" />
+  </div>
+  <div class="contactEmail">
+    <label for="">聯絡信箱：</label>
+    <input type="text" />
+  </div>
+  <div class="contactPhone">
+    <label for="">手機號碼：</label>
+    <input type="text" />
+  </div>
+  <p class="contactNote">
+    請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+  </p>
+</section>
+
+<footer>
+  <p>COPYRIGHT © 2021 台北一日遊!</p>
+</footer>
+{% endblock %} {% block js %}
+<script src="/static/js/booking.js"></script>
+{% endblock %}
