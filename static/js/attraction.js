@@ -101,6 +101,9 @@ window.onpageshow = function (event) {
           let bookHour = select(".clickEffect", true);
           let nowDate = new Date().toLocaleDateString();
           let newDateInput = new Date(dateInput.value).toLocaleDateString();
+
+          nowDate = Date.parse(nowDate);
+          newDateInput = Date.parse(newDateInput);
           if (newDateInput < nowDate) {
             bookErrorChoose("請輸入正確的日期!!");
             return;
