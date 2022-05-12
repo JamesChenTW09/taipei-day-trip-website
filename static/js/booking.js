@@ -13,7 +13,6 @@ let tourData;
     }
   });
   fetchData("api/booking", "GET").then((res) => {
-    console.log(res.data);
     if (!res.data) {
       noBookingData();
     } else {
