@@ -330,4 +330,11 @@ header .nav_top ul li:hover {
     margin: 10px 0px;
     padding-left: 10px;
   }
+}
+@media (max-width: 400px) {
+  header .nav_top ul li {
+    font-size: 14px;
+    padding: 0px 5px;
+    margin: 0px 5px;
+  }
 }/*# sourceMappingURL=header.css.map */
