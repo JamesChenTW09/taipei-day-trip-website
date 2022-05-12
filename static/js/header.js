@@ -1,11 +1,11 @@
-let select = (ele, all = false) => {
+const select = (ele, all = false) => {
   if (all) {
     return document.querySelectorAll(ele);
   } else {
     return document.querySelector(ele);
   }
 };
-let on = (type, ele, listener, all = false) => {
+const on = (type, ele, listener, all = false) => {
   let selectEle = select(ele, all);
   if (selectEle) {
     if (all) {
@@ -46,7 +46,6 @@ async function fetchWithBody(url, method, body) {
       console.log("There is a problem");
     });
 }
-
 //membership event handler
 window.onload = () => {
   const signUpMessage = select(".signUpMessage");
@@ -77,6 +76,11 @@ window.onload = () => {
         });
       });
     }
+  });
+
+  //header logo move to main page
+  on("click", ".nav_top h1", (e) => {
+    location.href = "/";
   });
 
   //login/signup cross / change platform click event

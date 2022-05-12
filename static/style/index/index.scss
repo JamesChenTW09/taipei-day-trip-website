@@ -1,36 +1,29 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans TC", sans-serif;
-}
 i {
   pointer-events: none;
 }
-.main_banner {
+.mainBanner {
   width: 100%;
   height: 320px;
-  background: url("/static/photos/cks_memorialHall.jpg");
+  background: url("/static/photos/cks.jpg");
   background-position: center;
   background-size: cover;
-  .txt_and_search {
+  .txtAndSearch {
+    position: relative;
     width: 1200px;
     height: 320px;
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: #f8f8f8;
+    h2 {
+      font-size: 28px;
+    }
     p {
       margin: 15px 0px 25px 0px;
       font-size: 16px;
-      color: #f8f8f8;
     }
-    h2 {
-      font-size: 28px;
-      color: #f8f8f8;
-    }
-
-    .search_area {
+    .searchArea {
       input {
         width: 400px;
         height: 46px;
@@ -59,12 +52,21 @@ i {
         }
       }
     }
+    .searchErrorMessage {
+      top: 250px;
+      left: 130px;
+      letter-spacing: 3px;
+      color: red;
+      font-size: 19px;
+      position: absolute;
+    }
   }
 }
 
 main {
+  position: relative;
   width: 1200px;
-  margin: 55px auto 1rem auto;
+  margin: 55px auto 100px auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, 270px);
   justify-content: space-evenly;
@@ -73,7 +75,7 @@ main {
     cursor: pointer;
     border: 1px solid rgba(128, 128, 128, 0.3);
     &:hover {
-      opacity: 0.8;
+      opacity: 0.9;
     }
     img {
       vertical-align: bottom;
@@ -122,9 +124,11 @@ footer {
   }
 }
 .noDataCss {
-  text-align: center;
-  margin: 1rem auto 2rem auto;
-  grid-column: 2/4;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media (max-width: 1220px) {
@@ -135,9 +139,9 @@ footer {
     }
   }
 
-  .main_banner {
+  .mainBanner {
     width: 100%;
-    .txt_and_search {
+    .txtAndSearch {
       padding-left: 20px;
       width: 100%;
     }
@@ -156,14 +160,17 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .main_banner {
+  .mainBanner {
     width: 100%;
-    .txt_and_search {
+    .txtAndSearch {
       width: 100%;
-      .search_area {
+      .searchArea {
         input {
           width: 230px;
         }
+      }
+      .searchErrorMessage {
+        left: 80px;
       }
     }
   }

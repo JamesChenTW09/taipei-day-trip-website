@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
 }
 
 header {
@@ -25,6 +26,11 @@ header .nav_top h1 {
   font-size: 30px;
   color: #448899;
   margin: 10px 0px;
+  cursor: pointer;
+}
+header .nav_top h1:hover {
+  color: #79aebb;
+  transition: 0.3s;
 }
 header .nav_top ul {
   list-style: none;
@@ -43,6 +49,7 @@ header .nav_top ul li:nth-child(3) {
   display: none;
 }
 header .nav_top ul li:hover {
+  transition: 0.3s;
   color: #9c9a9a;
 }
 
@@ -86,7 +93,7 @@ header .nav_top ul li:hover {
   position: relative;
 }
 .logIn .cross {
-  background: url("/static/photos/icon_closecross.jpg");
+  background: url("/static/photos/icon_close.jpg");
   width: 16px;
   height: 16px;
   top: 7px;
@@ -171,7 +178,7 @@ header .nav_top ul li:hover {
   position: relative;
 }
 .signUp .signUpCross {
-  background: url("/static/photos/icon_closecross.jpg");
+  background: url("/static/photos/icon_close.jpg");
   width: 16px;
   height: 16px;
   top: 7px;
