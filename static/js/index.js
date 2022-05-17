@@ -85,8 +85,11 @@ function showNoSearchData(attractionList) {
   attractionList.appendChild(noDataContainer);
 }
 //handle home page and search page scoll event
-window.onscroll = () => {
+
+window.onscroll = debounce(scrollEvent);
+function scrollEvent() {
   const footers = select("footer");
+
   if (!nextPage) {
     return;
   }
@@ -116,7 +119,17 @@ window.onscroll = () => {
       }
     });
   }
-};
+}
+
+function debounce(cb, delay = 300) {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      cb(...args);
+    }, delay);
+  };
+}
 
 function updatePageAndShow(newData, newNextPage, cb) {
   data = newData;
