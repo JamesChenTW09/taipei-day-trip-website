@@ -29,7 +29,8 @@ window.onpageshow = function (event) {
       firstDataRender();
 
       //small dots create and click event
-      for (let i = 0; i < data.images.length; i++) {
+      let dataLen = data.images.length;
+      for (let i = 0; i < dataLen; i++) {
         let imgs_dots_out = document.createElement("div");
         let imgs_dots_in = document.createElement("div");
         imgs_dots_out.classList.add("img_dot_out");
@@ -52,7 +53,6 @@ window.onpageshow = function (event) {
       let imgs_dots = select(".img_dot_out", true);
       dot_turn_black(imgs_dots, imageCount);
       right_arrow.addEventListener("click", (e) => {
-        console.log();
         dot_turn_white(imgs_dots, imageCount);
         imageCount++;
         if (imageCount < data.images.length) {
@@ -66,7 +66,7 @@ window.onpageshow = function (event) {
       });
       left_arrow.addEventListener("click", (e) => {
         dot_turn_white(imgs_dots, imageCount);
-        if (imageCount == 0) {
+        if (imageCount === 0) {
           imageCount = data.images.length - 1;
           add_remove_animation();
           dot_turn_black(imgs_dots, imageCount);

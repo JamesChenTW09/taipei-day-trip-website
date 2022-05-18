@@ -12,7 +12,6 @@ let fetchComplete = true;
     })
     .then((res) => {
       updatePageAndShow(res.data, res.nextPage, show12Datas);
-      //set boolean to decide which onscroll to run
       searchScroll = false;
       fetchComplete = true;
     });
