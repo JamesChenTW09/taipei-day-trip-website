@@ -1,3 +1,4 @@
+//clear the data when clicking previous page
 window.onpageshow = function (event) {
   if (event.persisted) {
     window.location.reload();
@@ -7,15 +8,15 @@ window.onpageshow = function (event) {
   let attraction_id = window.location.href;
   attraction_id = attraction_id.split("attraction/")[1];
 
-  let mainTitle = select(".main_container h3");
-  let mainCateMrt = select(".main_container .cate_and_mrt");
-  let mainImg = select(".image_container");
-  let dotContainer = select(".dotContainer");
-  let section_intro = select(".tour_intro");
-  let section_address = select(".tour_address");
-  let section_transport = select(".tour_transport");
-  let right_arrow = select(".right_arrow");
-  let left_arrow = select(".left_arrow");
+  const mainTitle = select(".main_container h3");
+  const mainCateMrt = select(".main_container .cate_and_mrt");
+  const mainImg = select(".image_container");
+  const dotContainer = select(".dotContainer");
+  const section_intro = select(".tour_intro");
+  const section_address = select(".tour_address");
+  const section_transport = select(".tour_transport");
+  const right_arrow = select(".right_arrow");
+  const left_arrow = select(".left_arrow");
   let imageCount = 0;
 
   fetch(`/api/attraction/${attraction_id}`)
@@ -28,7 +29,8 @@ window.onpageshow = function (event) {
       firstDataRender();
 
       //small dots create and click event
-      for (let i = 0; i < data.images.length; i++) {
+      let dataLen = data.images.length;
+      for (let i = 0; i < dataLen; i++) {
         let imgs_dots_out = document.createElement("div");
         let imgs_dots_in = document.createElement("div");
         imgs_dots_out.classList.add("img_dot_out");
@@ -64,7 +66,7 @@ window.onpageshow = function (event) {
       });
       left_arrow.addEventListener("click", (e) => {
         dot_turn_white(imgs_dots, imageCount);
-        if (imageCount == 0) {
+        if (imageCount === 0) {
           imageCount = data.images.length - 1;
           add_remove_animation();
           dot_turn_black(imgs_dots, imageCount);
@@ -97,14 +99,18 @@ window.onpageshow = function (event) {
         } else {
           const dateInput = select(".date_choosing input");
           const priceInput = select(".tour_pricing p span");
+          //prevent from booking the date and time in the past
           let nowHour = new Date().getHours();
           let bookHour = select(".clickEffect", true);
           let nowDate = new Date().toLocaleDateString();
           let newDateInput = new Date(dateInput.value).toLocaleDateString();
+
+          nowDate = Date.parse(nowDate);
+          newDateInput = Date.parse(newDateInput);
           if (newDateInput < nowDate) {
             bookErrorChoose("請輸入正確的日期!!");
             return;
-          } else if (dateInput.value === "") {
+          } else if (!dateInput.value) {
             bookErrorChoose("日期忘記選擇囉!!");
             return;
           } else if (
@@ -112,7 +118,7 @@ window.onpageshow = function (event) {
             bookHour[0].classList.contains("time_active") &&
             nowHour >= 13
           ) {
-            bookErrorChoose("當日下半天活動請在1點前預訂!!");
+            bookErrorChoose("當日下半天活動請在13點前預訂!!");
           } else if (
             newDateInput === nowDate &&
             bookHour[1].classList.contains("time_active") &&

@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
 }
 header {
   position: sticky;
@@ -21,11 +22,17 @@ header {
       font-size: 30px;
       color: #448899;
       margin: 10px 0px;
+      cursor: pointer;
+      &:hover {
+        color: #79aebb;
+        transition: 0.3s;
+      }
     }
     ul {
       list-style: none;
       display: flex;
       justify-content: space-around;
+
       padding: 10px 0px;
       li {
         cursor: pointer;
@@ -37,6 +44,7 @@ header {
           display: none;
         }
         &:hover {
+          transition: 0.3s;
           color: #9c9a9a;
         }
       }
@@ -82,7 +90,7 @@ header {
     position: relative;
   }
   .cross {
-    background: url("/static/photos/icon_closecross.jpg");
+    background: url("/static/photos/icon_close.jpg");
     width: 16px;
     height: 16px;
     top: 7px;
@@ -136,6 +144,7 @@ header {
     }
   }
 }
+
 .signUp {
   width: 340px;
   height: 330px;
@@ -167,7 +176,7 @@ header {
     position: relative;
   }
   .signUpCross {
-    background: url("/static/photos/icon_closecross.jpg");
+    background: url("/static/photos/icon_close.jpg");
     width: 16px;
     height: 16px;
     top: 7px;
@@ -290,6 +299,19 @@ header {
         color: #448899;
         margin: 10px 0px;
         padding-left: 10px;
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  header {
+    .nav_top {
+      ul {
+        li {
+          font-size: 14px;
+          padding: 0px 5px;
+          margin: 0px 5px;
+        }
       }
     }
   }

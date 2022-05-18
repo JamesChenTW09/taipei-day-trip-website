@@ -1,11 +1,11 @@
-let select = (ele, all = false) => {
+const select = (ele, all = false) => {
   if (all) {
     return document.querySelectorAll(ele);
   } else {
     return document.querySelector(ele);
   }
 };
-let on = (type, ele, listener, all = false) => {
+const on = (type, ele, listener, all = false) => {
   let selectEle = select(ele, all);
   if (selectEle) {
     if (all) {
@@ -46,7 +46,6 @@ async function fetchWithBody(url, method, body) {
       console.log("There is a problem");
     });
 }
-
 //membership event handler
 window.onload = () => {
   const signUpMessage = select(".signUpMessage");
@@ -58,46 +57,45 @@ window.onload = () => {
   //check user is login or not and set event handler to login/logout li
   fetchData("/api/user", "GET").then((res) => {
     if (!res.data) {
-      button[0].addEventListener("click", (e) => {
-        logInSection.classList.add("scaleUp");
-        logInSectionShow();
-      });
-      button[1].addEventListener("click", (e) => {
-        logInSection.classList.add("scaleUp");
-        logInSectionShow();
-      });
+      for (let i = 0; i < button.length - 1; i++) {
+        button[i].onclick = () => {
+          logInSection.classList.add("scaleUp");
+          logInSectionShow();
+        };
+      }
     } else {
       logInAndOutButton();
-      button[0].addEventListener("click", (e) => {
-        location.href = "/booking";
-      });
-      button[2].addEventListener("click", (e) => {
+      button[0].onclick = () => (location.href = "/booking");
+      button[2].onclick = () => {
         fetchData("/api/user", "DELETE").then((res) => {
           location.reload();
         });
-      });
+      };
     }
   });
 
+  //header logo move to main page
+  on("click", ".nav_top h1", () => (location.href = "/"));
+
   //login/signup cross / change platform click event
-  on("click", ".cross", (e) => {
+  on("click", ".cross", () => {
     messageHandler({ message: "" }, "275px", "11/12", "none");
     messageHandler("", "330px", "13/14", "none", "1");
     crossEffect(logInSection);
     setValueEmpty();
   });
-  on("click", ".signUpCross", (e) => {
+  on("click", ".signUpCross", () => {
     messageHandler({ message: "" }, "275px", "11/12", "none");
     messageHandler("", "330px", "13/14", "none", "1");
     crossEffect(signUpSection);
     setValueEmpty();
   });
-  on("click", ".loginSpan", (e) => {
-    logIN_exchange_signUp(signUpSection, logInSection);
-  });
-  on("click", ".signUpSpan", (e) => {
-    logIN_exchange_signUp(logInSection, signUpSection);
-  });
+  on("click", ".loginSpan", () =>
+    logIN_exchange_signUp(signUpSection, logInSection)
+  );
+  on("click", ".signUpSpan", () =>
+    logIN_exchange_signUp(logInSection, signUpSection)
+  );
 
   //check email is valid before submit
   on("focusout", ".signUpEmail", (e) => {
@@ -112,7 +110,7 @@ window.onload = () => {
   });
 
   //log in button click event
-  on("click", ".logIn button", (e) => {
+  on("click", ".logIn button", () => {
     const logInValue = {
       email: select(".logInEmail").value,
       password: select(".logInPassword").value,
@@ -138,7 +136,7 @@ window.onload = () => {
   });
 
   //signup event
-  on("click", ".signUp button", (e) => {
+  on("click", ".signUp button", () => {
     let valid = select(".signUpEmail").checkValidity();
     if (!valid) {
       messageHandler("", "365px", "15/16", "block", "信箱格式錯誤!!");

@@ -13,6 +13,7 @@ def check():
 	page = request.args.get("page")
 	keyword = request.args.get("keyword")
 
+
 	#取得資料庫總筆數
 	cursor.execute("SELECT COUNT(`id`) FROM `attraction`")
 	totalId = cursor.fetchone()
@@ -179,5 +180,6 @@ def handleImage(images):
 			searchId_data_images.pop(-1)
 			images["images"] = searchId_data_images
 			return images
+
 
 

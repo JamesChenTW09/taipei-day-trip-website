@@ -21,6 +21,7 @@ connection_pool = pooling.MySQLConnectionPool(
 # cursor.execute("CREATE DATABASE `taipei_attractions`;")
 # cursor.execute("USE `taipei_attractions`;")
 # cursor.execute("CREATE TABLE `attraction`(`id` INT PRIMARY KEY AUTO_INCREMENT,`name` VARCHAR(20),`category` VARCHAR(10),`description` TEXT,`address` TEXT,`transport` TEXT,`mrt` VARCHAR(10),`latitude` VARCHAR(15),`longitude` VARCHAR(15),`images` TEXT);")
+# cursor.execute("CREATE TABLE `order`(`id` INT PRIMARY KEY AUTO_INCREMENT,`userId` INT NOT NULL,`number` VARCHAR(50) NOT NULL,`price` INT NOT NULL,`attractionId` INT NOT NULL,`attractionName` VARCHAR(20) NOT NULL,`attractionAddress` TEXT NOT NULL,`attractionImage` TEXT NOT NULL,`attractionDate` VARCHAR(20) NOT NULL,`attractionTime` VARCHAR(20) NOT NULL,`name` VARCHAR(20) NOT NULL,`email` VARCHAR(50) NOT NULL,`phone` VARCHAR(30) NOT NULL,`status` INT NOT NULL);")
 
 
 # with open("taipei-attractions.json", encoding="utf-8")as file:
@@ -56,5 +57,7 @@ connection_pool = pooling.MySQLConnectionPool(
 # cursor.execute("CREATE TABLE `user`(`id` INT PRIMARY KEY AUTO_INCREMENT,`name` VARCHAR(20),`email` TEXT,`password` VARCHAR(50));")
 # cursor.execute("INSERT INTO `user`(`name`, `email`, `password`) VALUES('test1', 'test1@test.com', 'test1');")
 # connect.commit()
+
+
 
 

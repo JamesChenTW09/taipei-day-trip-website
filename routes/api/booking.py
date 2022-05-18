@@ -1,4 +1,3 @@
-
 from flask import *
 from data.database import connection_pool
 
@@ -8,8 +7,9 @@ bookings = Blueprint("bookings", __name__)
 def postBooking():
     connect = connection_pool.get_connection()
     cursor = connect.cursor(dictionary = True)
-
+    
     data = request.get_json()
+
     if data["date"] == "":
         return {
             "error":True,
@@ -21,6 +21,8 @@ def postBooking():
             "message":"請先登入"
         },400
     else:
+        if "orderNumber" in session: 
+            session.pop("orderNumber")
         cursor.execute("SELECT `name`, `address`, `images` FROM `attraction` WHERE `id` = %s",[data["attractionId"]])
         getData = cursor.fetchone()
         getImageData = getData["images"].split(",")[0]
@@ -39,6 +41,16 @@ def postBooking():
 
 @bookings.route("/api/booking", methods=["GET"])
 def getBooking():
+    if "orderNumber" in session:
+        session.pop("orderNumber")
+        session.pop("tourId")
+        session.pop("tourDate")
+        session.pop("tourTime")
+        session.pop("tourPrice")       
+        session.pop("tourAddress") 
+        session.pop("tourName")
+        session.pop("tourImage")
+        session.pop("phone")
     #check the booking is deleted or not
     if "tourId" not in session:
         return {"data":None},200

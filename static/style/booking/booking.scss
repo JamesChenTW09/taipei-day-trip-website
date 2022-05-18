@@ -1,13 +1,5 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  color: #666666;
-}
-
 .loading {
   position: fixed;
-  display: block;
   width: 100%;
   height: 100%;
   top: 0;
@@ -36,6 +28,7 @@
   }
 }
 .noBooking {
+  color: #666666;
   display: none;
   width: 996px;
   margin: 46px auto 40px auto;
@@ -48,6 +41,7 @@
 }
 main {
   width: 1200px;
+  color: #666666;
   border-bottom: 1px solid gray;
   margin: 46px auto 44px auto;
   h3 {
@@ -81,7 +75,7 @@ main {
       font-weight: 900;
       position: relative;
       .trashIcon {
-        background-image: url(/static/photos/icon_deletetrash.jpg);
+        background-image: url(/static/photos/icon_delete.jpg);
         background-repeat: no-repeat;
         position: absolute;
         top: 0;
@@ -131,6 +125,7 @@ main {
 }
 
 .bookingContact {
+  color: #666666;
   width: 980px;
   height: 227px;
   margin: 0px auto 44px auto;
@@ -147,12 +142,64 @@ main {
     border-radius: 5px;
   }
 }
+.cardInfo {
+  color: #666666;
+  margin: 44px auto 50px auto;
+  width: 1200px;
+  padding: 44px 0px 50px 110px;
+  border-top: 1px solid rgb(224, 221, 221);
+  border-bottom: 1px solid rgb(224, 221, 221);
+  h4 {
+    font-size: 19px;
+  }
+  .cardInfoBox {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    .tpfield {
+      height: 38px;
+      width: 200px;
+      border: 1px solid #e8e8e8;
+      padding: 10px;
+    }
+  }
+}
+
+.payComfirmButton {
+  color: #666666;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 980px;
+  height: 130px;
+  margin: 0px auto 0px auto;
+  p {
+    font-weight: bolder;
+  }
+  button {
+    margin-top: 25px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #448899;
+    font-size: 19px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .warnMessage {
+    padding: 5px;
+    font-size: 16px;
+    color: red;
+    font-weight: bolder;
+    opacity: 0;
+  }
+}
 
 footer {
   width: 100%;
   height: 104px;
   background-color: #757575;
-  margin-top: 55px;
+  margin-top: 50px;
   position: relative;
   p {
     width: 100%;
@@ -166,6 +213,24 @@ footer {
     font-weight: 700;
   }
 }
+//button scale animation
+@keyframes buttonScaleDown {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes buttonScaleUp {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 
 @media (max-width: 1200px) {
   .noBooking {
@@ -173,52 +238,22 @@ footer {
   }
   main {
     width: 90%;
-    border-bottom: 1px solid gray;
-    margin: 46px auto 44px auto;
     h3 {
-      font-size: 19px;
       width: 100%;
-      margin: 0px auto 35px auto;
     }
     .bookingInfo {
       width: 100%;
-      margin: 0px auto 40px auto;
-      display: grid;
-      grid-template-columns: 266px 22px auto;
-      grid-template-rows: 5px 146px 49px 40px;
-      .imgContainer {
-        grid-column: 1/2;
-        grid-row: 1/4;
-        .bookingImage {
-          width: 100%;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: 100%;
-        }
-      }
-      .bookingText {
-        grid-column: 3/4;
-        grid-row: 2/4;
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 14px 30px 14px 20px 14px 20px 14px 20px 14px;
-        font-weight: 900;
-        position: relative;
-        .trashIcon {
-          background-image: url(/static/photos/icon_deletetrash.jpg);
-          background-repeat: no-repeat;
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 30px;
-          height: 30px;
-          cursor: pointer;
-        }
-      }
     }
   }
   .bookingContact {
+    width: 90%;
+  }
+  .cardInfo {
+    width: 90%;
+    padding-left: 0px;
+  }
+
+  .payComfirmButton {
     width: 90%;
   }
 }
@@ -226,16 +261,11 @@ footer {
 @media (max-width: 600px) {
   main {
     width: 100%;
-    border-bottom: 1px solid rgb(224, 222, 222);
-    margin: 46px auto 44px auto;
     h3 {
       padding-left: 10px;
-      font-size: 19px;
       width: 100%;
-      margin: 0px auto 35px auto;
     }
     .bookingInfo {
-      width: 100%;
       margin: 0px auto 60px auto;
       grid-template-columns: 10px auto 10px;
       grid-template-rows: 5px auto 35px 165px;
@@ -248,7 +278,7 @@ footer {
         grid-column: 2/3;
         grid-row: 4/5;
         .trashIcon {
-          top: 165px;
+          top: 175px;
         }
       }
     }

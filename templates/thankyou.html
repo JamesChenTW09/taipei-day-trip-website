@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/static/style/thankyou/thankyou.css" />
+{% extends "header.html" %} {% block content %}
+
+<main>
+  <div class="loading">
+    <div class="loadingImage"></div>
+  </div>
+  <h2>付款成功</h2>
+  <div>
+    <p>訂單編號： <span class="finalTourNumber"></span></p>
+    <p>行程名稱：<span class="finalTourName"></span></p>
+    <p>時間：<span class="finalTourTime"></span></p>
+    <p>地點：<span class="finalTourPlace"></span></p>
+    <p>價錢：<span class="finalTourPrice"></span></p>
+  </div>
+  <button>回首頁</button>
+</main>
+
+<footer>
+  <p>COPYRIGHT © 2021 台北一日遊!</p>
+</footer>
+
+{% endblock %} {% block js %}
+<script src="/static/js/thankyou.js"></script>
+{% endblock %}

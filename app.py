@@ -4,6 +4,7 @@ from routes.api.attraction import attractions
 from routes.api.user import users
 from routes.pages.pages import pages
 from routes.api.booking import bookings
+from routes.api.order import orders
 
 
 app=Flask(__name__)
@@ -19,6 +20,7 @@ app.register_blueprint(users, url_prefix='')
 app.register_blueprint(attractions, url_prefix='')
 app.register_blueprint(pages, url_prefix='')
 app.register_blueprint(bookings, url_prefix='')
+app.register_blueprint(orders, url_prefix='')
 
 
 
