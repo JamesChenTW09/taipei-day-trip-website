@@ -28,13 +28,11 @@ http://34.200.206.129:3000
 
 #### Test Account
 | - | - |
-| -------- | -------- |
 | Account | test@test.com |
 | Password | test |
 
 #### Credit Card for test
 | - | - |
-| -------- | -------- |
 | Card Number	 | 4242424242424242 |
 | Valid Date	 | 01 / 23 |
 | CVV	 | 123 |
@@ -44,7 +42,7 @@ http://34.200.206.129:3000
 
 After the weekly development is completed, will sent `Pull Request` to the Reviewer, and after obtaining consent, the develop branch will be `merged` into the main branch, and the code will be synchronized to the EC2 computer update website.
 
-每週開發完成後，會向 Reviewer 發送 Pull Request，取得同意後將 develop 分支合併到 main 分支，並將程式碼同步到 EC2 的電腦更新網站。
+每週開發完成後，會向 Reviewer 發送 Pull Request，取得同意後將 develop 分支合併到 main 分支，並將程式碼同步到 AWS EC2 的電腦更新網站。
 
 
 ## RESTful API
@@ -62,27 +60,22 @@ The project adopts a development method that separation of front-end and back-en
 ## Features
 
 ### 1️⃣ Infinite Scroll
-Use Javascript `Intersection Observer API` to practice **Lazy Loading** and **Infinite Scroll** . By delaying, the required resources are loaded when needed, which reduces the loading burden of the browser and improves the user experience.
+Use `getBoundingClientRect and debounce` to practice  **Infinite Scroll** . By delaying, the required resources are loaded when needed, which reduces the loading burden of the browser and improves the user experience.
 
-使用 Javascript 的 `Intersection Observer API` 實踐 **Lazy Loading** 和 **Infinite Scroll**。透過延遲，在需要時才載入所需資源，降低瀏覽器載入負擔，提升使用者體驗。
+使用 `getBoundingClientRect and debounce` 實踐 **Infinite Scroll**。透過延遲，在需要時才載入所需資源，降低瀏覽器載入負擔，提升使用者體驗。
 
 
 ![ezgif-2-b43d405619](https://user-images.githubusercontent.com/92699251/169023608-3e32c378-5916-4eea-bcc7-556a791f1e4d.gif)
 
 
 
-
-
-
 ### 2️⃣ Keyword Search
-Use keywords or regions / topic filters can quickly find the attractions you want.
+Use keywords filters can quickly find the attractions you want.
 
 使用關鍵字搜尋可以快速找到想要的景點。
 
 
 ![ezgif-2-66196706cd](https://user-images.githubusercontent.com/92699251/169029054-9eb102ac-ec90-4df4-83fe-2a11872d2023.gif)
-
-
 
 
 
