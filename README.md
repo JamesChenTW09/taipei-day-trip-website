@@ -80,6 +80,7 @@ Use keywords or regions / topic filters can quickly find the attractions you wan
 使用關鍵字搜尋可以快速找到想要的景點。
 
 
+![ezgif-2-66196706cd](https://user-images.githubusercontent.com/92699251/169029054-9eb102ac-ec90-4df4-83fe-2a11872d2023.gif)
 
 
 
@@ -92,6 +93,7 @@ Use keywords or regions / topic filters can quickly find the attractions you wan
 ⚠️ 使用者需要成為會員才可以使用預約行程與付款的功能。
 
 
+![ezgif-2-bb6fe49451](https://user-images.githubusercontent.com/92699251/169029437-ddc51090-a1cb-4481-ba03-4a3191a889c3.gif)
 
 ### 4️⃣ View Attractions
 Click on the pictures of attractions on the homepage to see more information.
@@ -100,6 +102,7 @@ Click on the pictures of attractions on the homepage to see more information.
 
 - Slide Show 圖片輪播
 
+![ezgif-2-093c9bb53a](https://user-images.githubusercontent.com/92699251/169029740-9959fd04-c1c2-475b-9434-c454f3e69b3f.gif)
 
 
 
@@ -107,6 +110,7 @@ Click on the pictures of attractions on the homepage to see more information.
 Use `TapPay` to connect to a third-party cash flow system. After the credit card is successfully authenticated, the user completes the payment.
 
 使用 `TapPay` 串接第三方金流系統，信用卡認證成功後，使用者完成付款。
+![ezgif-2-2907515d0d](https://user-images.githubusercontent.com/92699251/169029980-1977cd29-aab7-4b27-99e7-8324ff1743fa.gif)
 
 
 
