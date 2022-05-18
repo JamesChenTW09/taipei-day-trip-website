@@ -67,8 +67,8 @@ Use Javascript `Intersection Observer API` to practice **Lazy Loading** and **In
 使用 Javascript 的 `Intersection Observer API` 實踐 **Lazy Loading** 和 **Infinite Scroll**。透過延遲，在需要時才載入所需資源，降低瀏覽器載入負擔，提升使用者體驗。
 
 
+![ezgif-2-b43d405619](https://user-images.githubusercontent.com/92699251/169023608-3e32c378-5916-4eea-bcc7-556a791f1e4d.gif)
 
-https://user-images.githubusercontent.com/92699251/168995570-e3c1d733-8fd4-4523-8a40-fc664fc55e3f.mp4
 
 
 
@@ -81,7 +81,7 @@ Use keywords or regions / topic filters can quickly find the attractions you wan
 
 
 
-https://user-images.githubusercontent.com/92699251/168995233-aa9bbfd3-9395-45cd-8c1a-28c49a6446e6.mp4
+
 
 
 
