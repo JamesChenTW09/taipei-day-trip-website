@@ -108,3 +108,7 @@ Use `TapPay` to connect to a third-party cash flow system. After the credit card
 
 
 ### 6️⃣ Responsive Web Design (RWD)
+
+
+![ezgif-2-9778d263e2](https://user-images.githubusercontent.com/92699251/169189279-fbfff30b-f910-458c-8f02-907dc841bf34.gif)
+
