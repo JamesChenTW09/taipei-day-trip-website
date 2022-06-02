@@ -15,8 +15,10 @@ http://34.200.206.129:3000
 
 #### Test Account
 | - | - |
+| -------- | -------- |
 | Account | test@test.com |
 | Password | test |
+
 
 #### Credit Card for test
 | - | - |
