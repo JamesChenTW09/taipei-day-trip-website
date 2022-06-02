@@ -3,23 +3,10 @@
 
 ![](https://i.imgur.com/PzYAbIc.jpg)
 
-Taipei Trip is a travel e-commerce website. With more than 300 attractions information, click on the photos of the attractions to view more information, and make reservations and payment.
+Taipei Trip is a travel e-commerce website. With many attractions information, click on the photos of the attractions to view more information, and make reservations and payment.
 
 
 台北一日遊是一個旅遊電商網站。擁有數十筆的景點資料，點擊景點資照片可以訊查看看更多資訊，並預約行程、付款。
-
-## Catalog
-- [Live Demo](#live-demo)
-- [Skills Structure](#skills-structure)
-- [RESTful API](#restful-api)
-- [Features](#features)
-  - #1 Lazy Loading & Infinite Scroll
-  - #2 Keyword Search
-  - #3 Member System
-  - #4 View Attractions
-  - #5 Scheduled Route
-  - #6 Responsive Web Design
-
 
 ## Live Demo
 
