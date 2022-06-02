@@ -20,7 +20,8 @@ http://34.200.206.129:3000
 
 #### Credit Card for test
 | - | - |
-| Card Number	 | 4242424242424242 |
+| -------- | -------- |
+| Card Number	 | 424242442424242 |
 | Valid Date	 | 01 / 23 |
 | CVV	 | 123 |
 
