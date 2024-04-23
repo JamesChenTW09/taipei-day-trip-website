@@ -11,7 +11,6 @@ Taipei Trip is a travel e-commerce website. With many attractions information, c
 ## Live Demo
 
 
-http://34.200.206.129:3000
 
 #### Test Account
 | - | - |
