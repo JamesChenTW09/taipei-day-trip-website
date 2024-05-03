@@ -8,11 +8,6 @@ Taipei Trip is a travel e-commerce website. With many attractions information, c
 
 台北一日遊是一個旅遊電商網站。擁有數十筆的景點資料，點擊景點資照片可以訊查看看更多資訊，並預約行程、付款。
 
-## Live Demo
-
-
-http://34.200.206.129:3000
-
 #### Test Account
 | - | - |
 | -------- | -------- |
